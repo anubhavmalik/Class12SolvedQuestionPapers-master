@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "622729694306",
+    "firebase_url": "https://class12solvedquestionpapers-ma.firebaseio.com",
+    "project_id": "class12solvedquestionpapers-ma",
+    "storage_bucket": "class12solvedquestionpapers-ma.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622729694306:android:55591e5586941550",
+        "android_client_info": {
+          "package_name": "com.anuntah.android.cbse_class12solvedquestionpapers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622729694306-6n7se4mg3edio02nimqe2tdi0ipjuq3q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anuntah.android.cbse_class12solvedquestionpapers",
+            "certificate_hash": "c7918daba2f3a58dab0ae310a2b630d156c9ff86"
+          }
+        },
+        {
+          "client_id": "622729694306-q6t7k7g2veqbrb3reiqki27s6isq9035.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKuJNQAsvgLaJQmiyjIFOXK7pUCjou7zQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622729694306-q6t7k7g2veqbrb3reiqki27s6isq9035.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
