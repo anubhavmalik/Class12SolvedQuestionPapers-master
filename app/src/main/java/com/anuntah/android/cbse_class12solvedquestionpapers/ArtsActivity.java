@@ -33,8 +33,6 @@ public class ArtsActivity extends AppCompatActivity {
                 extra.putString("Subject", "English");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -52,8 +50,6 @@ public class ArtsActivity extends AppCompatActivity {
                 extra.putString("Stream", "Arts");
                 extra.putString("Subject", "Political Science");
                 streamIntent.putExtras(extra);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
                 startActivity(streamIntent);
             }
 
@@ -74,8 +70,6 @@ public class ArtsActivity extends AppCompatActivity {
                 extra.putString("Subject", "History");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -85,36 +79,31 @@ public class ArtsActivity extends AppCompatActivity {
         hindi_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create new intent
+
                 Intent streamIntent = new Intent(ArtsActivity.this, ScienceYearsListActivity.class);
 
-                // Start the new Activity
                 Bundle extra = new Bundle();
                 extra.putString("Stream", "Arts");
                 extra.putString("Subject", "Hindi");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
 
-        Button geography_button = (Button) findViewById(R.id.geography_button);
+        Button geography_button =  findViewById(R.id.geography_button);
 
         geography_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create new intent
+
                 Intent streamIntent = new Intent(ArtsActivity.this, ScienceYearsListActivity.class);
 
-                // Start the new Activity
+
                 Bundle extra = new Bundle();
                 extra.putString("Stream", "Arts");
                 extra.putString("Subject", "Geography");
                 streamIntent.putExtras(extra);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
                 startActivity(streamIntent);
             }
 
@@ -135,8 +124,6 @@ public class ArtsActivity extends AppCompatActivity {
                 extra.putString("Subject", "Economics");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -155,8 +142,6 @@ public class ArtsActivity extends AppCompatActivity {
                 extra.putString("Stream", "Arts");
                 extra.putString("Subject", "Physical Education");
                 streamIntent.putExtras(extra);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
                 startActivity(streamIntent);
             }
 

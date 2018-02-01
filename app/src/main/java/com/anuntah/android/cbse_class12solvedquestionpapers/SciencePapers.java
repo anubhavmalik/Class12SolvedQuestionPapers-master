@@ -30,7 +30,7 @@ public class SciencePapers extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_science_papers);
-        progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
+        progressBarHolder =  findViewById(R.id.progressBarHolder);
 
         inAnimation = new AlphaAnimation(0f, 1f);
         inAnimation.setDuration(200);

@@ -54,7 +54,6 @@ public class CommerceActivity extends AppCompatActivity {
                 extra.putString("Subject", "Economics");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -73,7 +72,6 @@ public class CommerceActivity extends AppCompatActivity {
                 extra.putString("Stream", "Commerce");
                 extra.putString("Subject", "Business Studies");
                 streamIntent.putExtras(extra);
-                startActivity(streamIntent);
                 startActivity(streamIntent);
             }
 
@@ -94,7 +92,6 @@ public class CommerceActivity extends AppCompatActivity {
                 extra.putString("Subject", "Maths");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -114,7 +111,6 @@ public class CommerceActivity extends AppCompatActivity {
                 extra.putString("Subject", "English");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -132,8 +128,6 @@ public class CommerceActivity extends AppCompatActivity {
                 extra.putString("Stream", "Arts");
                 extra.putString("Subject", "Hindi");
                 streamIntent.putExtras(extra);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
                 startActivity(streamIntent);
             }
 
@@ -154,7 +148,6 @@ public class CommerceActivity extends AppCompatActivity {
                 extra.putString("Stream", "Commerce");
                 extra.putString("Subject", "Physical Education");
                 streamIntent.putExtras(extra);
-                startActivity(streamIntent);
                 startActivity(streamIntent);
             }
 

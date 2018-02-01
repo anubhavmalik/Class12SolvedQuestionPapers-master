@@ -18,8 +18,11 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -48,6 +51,31 @@ public class ScienceYearsListActivity extends AppCompatActivity {
 
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        firebaseFirestore.setFirestoreSettings(settings);
+
+        firebaseFirestore.collection("solved papers")
+                .whereEqualTo("subject", Subject)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        if(e!=null)
+                            return;
+                        else {
+                            for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
+                                questionsPaper = documentChange.getDocument().toObject(QuestionsPaper.class);
+                                years.add(new Year(Integer.parseInt(questionsPaper.year)));
+                                Log.d("TAGGER", questionsPaper.year + "");
+                            }
+                            sortList(years);
+                            adaptor.notifyDataSetChanged();
+                        }
+                    }
+                });
+
 
         firebaseFirestore.collection("solved papers")
                 .whereEqualTo("subject", Subject)
@@ -80,10 +108,6 @@ public class ScienceYearsListActivity extends AppCompatActivity {
                         Toast.makeText(ScienceYearsListActivity.this, "Failed to fetch records", Toast.LENGTH_SHORT).show();
                     }
                 });
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                .setPersistenceEnabled(true)
-                .build();
-        firebaseFirestore.setFirestoreSettings(settings);
 
         final ListView listView = (ListView) findViewById(R.id.list10Years);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
