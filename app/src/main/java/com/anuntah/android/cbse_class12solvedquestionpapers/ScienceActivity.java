@@ -52,7 +52,6 @@ public class ScienceActivity extends AppCompatActivity {
                 extra.putString("Subject", "Chemistry");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -71,7 +70,6 @@ public class ScienceActivity extends AppCompatActivity {
                 extra.putString("Stream", "Science");
                 extra.putString("Subject", "Computer Science");
                 streamIntent.putExtras(extra);
-                startActivity(streamIntent);
                 startActivity(streamIntent);
             }
 
@@ -92,7 +90,6 @@ public class ScienceActivity extends AppCompatActivity {
                 extra.putString("Subject", "English");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -112,7 +109,6 @@ public class ScienceActivity extends AppCompatActivity {
                 extra.putString("Subject", "Hindi");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -131,8 +127,6 @@ public class ScienceActivity extends AppCompatActivity {
                 extra.putString("Subject", "Mathematics");
                 streamIntent.putExtras(extra);
                 startActivity(streamIntent);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
             }
 
         });
@@ -150,8 +144,6 @@ public class ScienceActivity extends AppCompatActivity {
                 extra.putString("Stream", "Science");
                 extra.putString("Subject", "Physics");
                 streamIntent.putExtras(extra);
-                startActivity(streamIntent);
-                startActivity(streamIntent);
                 startActivity(streamIntent);
             }
 
@@ -172,7 +164,6 @@ public class ScienceActivity extends AppCompatActivity {
                 extra.putString("Stream", "Science");
                 extra.putString("Subject", "Physical Education");
                 streamIntent.putExtras(extra);
-                startActivity(streamIntent);
                 startActivity(streamIntent);
             }
 
