@@ -21,11 +21,11 @@ import java.util.ArrayList;
  */
 
 
-public class YearAdaptor extends ArrayAdapter<Year> {
+public class YearAdapter extends ArrayAdapter<Year> {
 
 
     private int mColorResourceId;
-    public YearAdaptor(Activity context, ArrayList<Year> years,int colorResourceId) {
+    public YearAdapter(Activity context, ArrayList<Year> years, int colorResourceId) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not

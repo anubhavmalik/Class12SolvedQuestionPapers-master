@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://F:\My App GIt\Class12SolvedQuestionPapers-master\Class12SolvedQuestionPapers.iml" filepath="F:\My App GIt\Class12SolvedQuestionPapers-master\Class12SolvedQuestionPapers.iml" />
       <module fileurl="file://$PROJECT_DIR$/Class12SolvedQuestionPapers-master.iml" filepath="$PROJECT_DIR$/Class12SolvedQuestionPapers-master.iml" />
+      <module fileurl="file://C:\Users\Anubhav\Documents\GitHub\Class12SolvedQuestionPapers-master\Class12SolvedQuestionPapers-master.iml" filepath="C:\Users\Anubhav\Documents\GitHub\Class12SolvedQuestionPapers-master\Class12SolvedQuestionPapers-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Anubhav\Documents\GitHub\Class12SolvedQuestionPapers-master\app\app.iml" filepath="C:\Users\Anubhav\Documents\GitHub\Class12SolvedQuestionPapers-master\app\app.iml" />
     </modules>
   </component>
 </project>

@@ -18,20 +18,19 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class ScienceYearsListActivity extends AppCompatActivity {
-    YearAdaptor adaptor;
+    YearAdapter adaptor;
     String Stream;
     String Subject;
     QuestionsPaper questionsPaper;
@@ -45,21 +44,31 @@ public class ScienceYearsListActivity extends AppCompatActivity {
         Bundle mBundle = sub_sci.getExtras();
         Stream = mBundle.getString("Stream");
         Subject = mBundle.getString("Subject");
-        adaptor = new YearAdaptor(this, years, R.color.grey_background);
+        adaptor = new YearAdapter(this, years, R.color.grey_background);
 
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
         firebaseFirestore.collection("solved papers")
+                .whereEqualTo("subject", Subject)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for(DocumentSnapshot documentSnapshot : task.getResult()){
-                                questionsPaper = documentSnapshot.toObject(QuestionsPaper.class);
-                                years.add(new Year(questionsPaper.year));
-                                Log.d("TAGGER",questionsPaper.year+"");
+                        if (task.isSuccessful()) {
+                            if (task.getResult() != null) {
+
+                                for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                                    questionsPaper = documentSnapshot.toObject(QuestionsPaper.class);
+                                    years.add(new Year(Integer.parseInt(questionsPaper.year)));
+                                    Log.d("TAGGER", questionsPaper.year + "");
+                                }
+                                sortList(years);
+                                adaptor.notifyDataSetChanged();
+                            }
+
+                            else {
+                                Toast.makeText(ScienceYearsListActivity.this, "Couldn't update list", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -71,42 +80,11 @@ public class ScienceYearsListActivity extends AppCompatActivity {
                         Toast.makeText(ScienceYearsListActivity.this, "Failed to fetch records", Toast.LENGTH_SHORT).show();
                     }
                 });
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("QuestionPapers");
-//
-//
-//        myRef.orderByChild("subject").equalTo(Subject).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-//                    QuestionsPaper ques = postSnapshot.getValue(QuestionsPaper.class);
-//                    years.add(new Year(ques.year));
-//                }
-//                adaptor.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//              //  Log.w("Tag", "Failed to read value.", error.toException());
-//            }
-//        });
-//
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        firebaseFirestore.setFirestoreSettings(settings);
 
-
-        // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
-        // adapter knows how to create layouts for each item in the list, using the
-        // simple_list_item_1.xml layout resource defined in the Android framework.
-        // This list item layout contains a single {@link TextView}, which the adapter will set to
-        // display a single word.
-
-
-        // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // activity_numbers.xml layout file.
         final ListView listView = (ListView) findViewById(R.id.list10Years);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -123,12 +101,21 @@ public class ScienceYearsListActivity extends AppCompatActivity {
         });
 
 
-        // Make the {@link ListView} use the {@link ArrayAdapter} we created above, so that the
-        // {@link ListView} will display list items for each word in the list of words.
-        // Do this by calling the setAdapter method on the {@link ListView} object and pass in
-        // 1 argument, which is the {@link ArrayAdapter} with the variable name itemsAdapter.
         listView.setAdapter(adaptor);
     }
+
+    private void sortList(ArrayList<Year> list) {
+        Collections.sort(list, new Comparator<Year>() {
+
+            @Override
+            public int compare(Year year, Year t1) {
+                Integer idea1 = new Integer(year.getYear());
+                Integer idea2 = new Integer(t1.getYear());
+                return idea1.compareTo(idea2);
+            }
+        });
+    }
+
 
 
 }

@@ -2,27 +2,29 @@ package com.anuntah.android.cbse_class12solvedquestionpapers;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
+
 /**
  * Created by Aman Tyagi on 28-10-2017.
  */
 @IgnoreExtraProperties
-public class QuestionsPaper {
+public class QuestionsPaper implements Serializable {
 
     public String stream;
+    public String subject;
+    public String year;
+    public String file;
 
     public QuestionsPaper() {
     }
 
-    public QuestionsPaper(String stream, String subject, int year, String file) {
+    public QuestionsPaper(String stream, String subject, String year, String file) {
 
         this.stream = stream;
         this.subject = subject;
         this.year = year;
         this.file = file;
     }
-
-    public String subject;
-    public int year;
 
     public String getStream() {
         return stream;
@@ -40,11 +42,11 @@ public class QuestionsPaper {
         this.subject = subject;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -56,5 +58,4 @@ public class QuestionsPaper {
         this.file = file;
     }
 
-    public String file;
 }

@@ -20,8 +20,6 @@ public class FileDownloader {
 
             URL url = new URL(fileUrl);
             HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
-            //urlConnection.setRequestMethod("GET");
-            //urlConnection.setDoOutput(true);
             urlConnection.connect();
 
             InputStream inputStream = urlConnection.getInputStream();
@@ -32,16 +30,16 @@ public class FileDownloader {
             int bufferLength = 0;
             while((bufferLength = inputStream.read(buffer))>0)
             {
-            fileOutputStream.write(buffer, 0, bufferLength);
+                fileOutputStream.write(buffer, 0, bufferLength);
+            }
+            fileOutputStream.close();
+        } catch (
+                com.github.barteksc.pdfviewer.exception.FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        fileOutputStream.close();
-    } catch (
-    com.github.barteksc.pdfviewer.exception.FileNotFoundException e) {
-        e.printStackTrace();
-    } catch (MalformedURLException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
     }
-}
 }

@@ -7,11 +7,21 @@ import com.shockwave.pdfium.PdfDocument;
  */
 
 public class Year {
+
+    int year =0 ;
+
+    public int getYear() {
+        return year;
+    }
+
     //Default translation for the word
     private String YearNumber;
 
-    private PdfDocument QuestionPaper;
+    public String getYearNumber() {
+        return YearNumber;
+    }
 
+    private PdfDocument QuestionPaper;
 
     // Image displayed for word
     private int mImageResourceId = NO_IMAGE_PROVIDED;
@@ -62,16 +72,10 @@ public class Year {
         return resourceID;
     }
 
-
-
-    //myRef.setValue("Opening Paper");
-
-
-
     public Year(int currentYear){
+        year = currentYear;
         YearNumber = "Year "+currentYear;
         mImageResourceId = getImage(currentYear);
-
     }
 
     public Year(String currentYear, int ImageResourceId, int PDFResourceID){
