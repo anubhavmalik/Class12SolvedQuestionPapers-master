@@ -17,6 +17,7 @@ import com.google.android.gms.ads.MobileAds;
 public class ScienceActivity extends AppCompatActivity {
 
     AdView bannerAdView;
+    AdView bannerAdView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,13 @@ public class ScienceActivity extends AppCompatActivity {
         bannerAdView = (AdView)findViewById(R.id.science_subjects_ad);
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         bannerAdView.loadAd(adRequest);
+
+        // AD 2
+        MobileAds.initialize(this,"\n" +
+                "ca-app-pub-1852896435962105~9539559937");
+        bannerAdView2 = (AdView)findViewById(R.id.science_subjects_ad2);
+        AdRequest adRequest2 = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        bannerAdView2.loadAd(adRequest2);
 
         Button biology_list = (Button) findViewById(R.id.biology_button);
 
