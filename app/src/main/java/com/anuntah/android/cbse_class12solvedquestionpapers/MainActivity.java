@@ -14,8 +14,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.FirebaseDatabase;
 
 @SuppressWarnings("deprecation")
@@ -23,16 +24,27 @@ import com.google.firebase.database.FirebaseDatabase;
 //Starts the app
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    AdView bannerAdView;
+
     //declare variables for side drawer
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView mNavigationView;
     private FirebaseDatabase firebaseDatabase;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        MobileAds.initialize(this,"\n" +
+                "ca-app-pub-1852896435962105~9539559937");
+        bannerAdView = (AdView)findViewById(R.id.main_screen_ad);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        bannerAdView.loadAd(adRequest);
+
 
 
 //        FirebaseApp.initializeApp(this);

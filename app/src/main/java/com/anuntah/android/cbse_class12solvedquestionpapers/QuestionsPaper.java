@@ -15,16 +15,23 @@ public class QuestionsPaper implements Serializable {
     public String year;
     public String file;
 
+
     public QuestionsPaper() {
     }
 
+
+
     public QuestionsPaper(String stream, String subject, String year, String file) {
+
+
 
         this.stream = stream;
         this.subject = subject;
         this.year = year;
         this.file = file;
     }
+
+
 
     public String getStream() {
         return stream;

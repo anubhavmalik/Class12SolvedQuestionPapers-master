@@ -10,13 +10,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 
 public class StreamActivity extends AppCompatActivity {
+
+    AdView bannerAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stream_activity);
+
+        MobileAds.initialize(this,"\n" +
+                "ca-app-pub-1852896435962105~9539559937");
+        bannerAdView = (AdView)findViewById(R.id.adStreamView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        bannerAdView.loadAd(adRequest);
 
 
         //Set intent to Science Activity

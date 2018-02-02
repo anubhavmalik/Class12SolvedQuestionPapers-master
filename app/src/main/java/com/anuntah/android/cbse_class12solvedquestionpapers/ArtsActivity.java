@@ -10,16 +10,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 
 public class ArtsActivity extends AppCompatActivity {
+
+    AdView bannerAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.arts_activity);
 
+        MobileAds.initialize(this,"\n" +
+                "ca-app-pub-1852896435962105~9539559937");
+        bannerAdView = (AdView)findViewById(R.id.arts_subject_ad);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        bannerAdView.loadAd(adRequest);
 
-        Button english_list = (Button) findViewById(R.id.english_button);
+
+        Button english_list = findViewById(R.id.english_button);
 
         english_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +49,7 @@ public class ArtsActivity extends AppCompatActivity {
 
         });
 
-        Button pol_sci_list = (Button) findViewById(R.id.pol_sci_button);
+        Button pol_sci_list = findViewById(R.id.pol_sci_button);
 
         pol_sci_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +68,7 @@ public class ArtsActivity extends AppCompatActivity {
         });
 
 
-        Button history_list = (Button) findViewById(R.id.history_button);
+        Button history_list = findViewById(R.id.history_button);
 
         history_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +86,7 @@ public class ArtsActivity extends AppCompatActivity {
 
         });
 
-        Button hindi_list = (Button) findViewById(R.id.hindi_button);
+        Button hindi_list = findViewById(R.id.hindi_button);
 
         hindi_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +122,7 @@ public class ArtsActivity extends AppCompatActivity {
         });
 
 
-        Button economics_list = (Button) findViewById(R.id.economics_button);
+        Button economics_list = findViewById(R.id.economics_button);
 
         economics_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,7 +141,7 @@ public class ArtsActivity extends AppCompatActivity {
         });
 
 
-        Button pe_list = (Button) findViewById(R.id.pe_button);
+        Button pe_list = findViewById(R.id.pe_button);
 
         pe_list.setOnClickListener(new View.OnClickListener() {
             @Override
