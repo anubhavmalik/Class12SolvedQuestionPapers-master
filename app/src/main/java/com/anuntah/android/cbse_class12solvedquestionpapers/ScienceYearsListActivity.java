@@ -51,64 +51,68 @@ public class ScienceYearsListActivity extends AppCompatActivity {
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                .setPersistenceEnabled(true)
-                .build();
-        firebaseFirestore.setFirestoreSettings(settings);
+//
+//        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+//                .setPersistenceEnabled(true)
+//                .build();
+//        firebaseFirestore.setFirestoreSettings(settings);
+//
+//        firebaseFirestore.collection("solved papers")
+//                .whereEqualTo("subject", Subject)
+//                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+//                        if (e != null)
+//                            return;
+//                        else {
+//                            if (documentSnapshots != null) {
+//                                for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
+//                                    questionsPaper = documentChange.getDocument().toObject(QuestionsPaper.class);
+//                                    years.add(new Year(Integer.parseInt(questionsPaper.year)));
+//                                    Log.d("OFFLINE TAGGER", questionsPaper.year + "");
+//
+//
+//                                }
+//                                isAvailableOffline = true;
+//                            }
+//                            sortList(years);
+//                            adaptor.notifyDataSetChanged();
+//                        }
+//                    }
+//                });
 
-        firebaseFirestore.collection("solved papers")
-                .whereEqualTo("subject", Subject)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                        if(e!=null)
-                            return;
-                        else {
-                            for (DocumentChange documentChange : documentSnapshots.getDocumentChanges()) {
-                                questionsPaper = documentChange.getDocument().toObject(QuestionsPaper.class);
-                                years.add(new Year(Integer.parseInt(questionsPaper.year)));
-                                Log.d("TAGGER", questionsPaper.year + "");
-                            }
-                            sortList(years);
-                            adaptor.notifyDataSetChanged();
-                        }
-                    }
-                });
+//        if(years.isEmpty()) {
+            firebaseFirestore.collection("solved papers")
+                    .whereEqualTo("subject", Subject)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                if (task.getResult() != null) {
 
-
-        firebaseFirestore.collection("solved papers")
-                .whereEqualTo("subject", Subject)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            if (task.getResult() != null) {
-
-                                for (DocumentSnapshot documentSnapshot : task.getResult()) {
-                                    questionsPaper = documentSnapshot.toObject(QuestionsPaper.class);
-                                    years.add(new Year(Integer.parseInt(questionsPaper.year)));
-                                    Log.d("TAGGER", questionsPaper.year + "");
+                                    for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                                        questionsPaper = documentSnapshot.toObject(QuestionsPaper.class);
+                                        years.add(new Year(Integer.parseInt(questionsPaper.year)));
+                                        Log.d("TAGGER", questionsPaper.year + "");
+                                    }
+                                    sortList(years);
+                                    adaptor.notifyDataSetChanged();
+                                } else {
+                                    Toast.makeText(ScienceYearsListActivity.this, "Couldn't update list", Toast.LENGTH_SHORT).show();
                                 }
-                                sortList(years);
-                                adaptor.notifyDataSetChanged();
-                            }
 
-                            else {
-                                Toast.makeText(ScienceYearsListActivity.this, "Couldn't update list.", Toast.LENGTH_SHORT).show();
                             }
-
                         }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ScienceYearsListActivity.this, "Failed to fetch records.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        final ListView listView = (ListView) findViewById(R.id.list10Years);
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(ScienceYearsListActivity.this, "Failed to fetch records", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+//        }
+        final ListView listView =  findViewById(R.id.list10Years);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -138,7 +142,6 @@ public class ScienceYearsListActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 }
