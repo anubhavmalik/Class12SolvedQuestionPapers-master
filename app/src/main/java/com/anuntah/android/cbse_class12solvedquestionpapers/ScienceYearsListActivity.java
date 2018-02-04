@@ -118,7 +118,7 @@ public class ScienceYearsListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Intent intent = new Intent(ScienceYearsListActivity.this, SciencePapers.class);
-                final TextView tv_id = (TextView) view.findViewById(R.id.year_text_view);
+                final TextView tv_id =  view.findViewById(R.id.year_text_view);
                 String txt = tv_id.getText().toString();
                 intent.putExtra("year", txt);
                 intent.putExtra("stream", Stream);
