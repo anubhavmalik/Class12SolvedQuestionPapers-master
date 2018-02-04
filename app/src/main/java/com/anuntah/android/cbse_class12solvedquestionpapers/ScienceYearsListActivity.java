@@ -36,6 +36,7 @@ public class ScienceYearsListActivity extends AppCompatActivity {
     String Stream;
     String Subject;
     QuestionsPaper questionsPaper;
+    boolean isAvailableOffline = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
