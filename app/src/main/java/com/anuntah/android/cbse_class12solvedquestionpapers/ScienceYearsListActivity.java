@@ -95,7 +95,7 @@ public class ScienceYearsListActivity extends AppCompatActivity {
                             }
 
                             else {
-                                Toast.makeText(ScienceYearsListActivity.this, "Couldn't update list", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ScienceYearsListActivity.this, "Couldn't update list.", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -104,7 +104,7 @@ public class ScienceYearsListActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ScienceYearsListActivity.this, "Failed to fetch records", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ScienceYearsListActivity.this, "Failed to fetch records.", Toast.LENGTH_SHORT).show();
                     }
                 });
 
